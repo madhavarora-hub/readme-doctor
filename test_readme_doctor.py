@@ -25,3 +25,10 @@ class T3(unittest.TestCase):
         r = requirements('https://x/score')
         self.assertEqual(r['payTo'], '0xdee5d17120fe5b415858c977555fd0c4ed6d3fda')
         self.assertEqual(r['scheme'], 'exact')
+
+class T4(unittest.TestCase):
+    def test_cli_eval_and_md(self):
+        from cli import evaluate, to_markdown
+        s, f = evaluate('# T\n')
+        self.assertLess(s, 100)
+        self.assertIn('Score:', to_markdown('x', s, f))
