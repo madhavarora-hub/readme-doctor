@@ -18,3 +18,10 @@ class T2(unittest.TestCase):
         out = suggest('# T\n')
         self.assertIn('## License', out)
         self.assertGreater(score('# T\n' + out)['score'], score('# T\n')['score'])
+
+class T3(unittest.TestCase):
+    def test_402_requirements(self):
+        from x402_server import requirements
+        r = requirements('https://x/score')
+        self.assertEqual(r['payTo'], '0xdee5d17120fe5b415858c977555fd0c4ed6d3fda')
+        self.assertEqual(r['scheme'], 'exact')
