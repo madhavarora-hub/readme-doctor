@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "readme-doctor"
+version = "0.1.0"
+description = "Score a README.md and list concrete fixes"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [{name = "Dansen AI"}]
+
+[project.urls]
+Homepage = "https://github.com/madhavarora-hub/readme-doctor"
+
+[project.scripts]
+readme-doctor = "readme_doctor:main"
+
+[tool.setuptools]
+py-modules = ["readme_doctor"]
