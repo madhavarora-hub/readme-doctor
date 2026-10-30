@@ -1,0 +1,15 @@
+name: readme-doctor
+description: Score README.md and fail if below a threshold
+inputs:
+  path:
+    default: README.md
+  min-score:
+    default: "70"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        python "${{ github.action_path }}/cli.py" "${{ inputs.path }}" > /tmp/rd.json
+        cat /tmp/rd.json
+        python -c "import json,sys; s=json.load(open('/tmp/rd.json'))['score']; sys.exit(0 if s>=int('${{ inputs.min-score }}') else 1)"
