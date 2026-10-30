@@ -10,3 +10,11 @@ class T(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class T2(unittest.TestCase):
+    def test_template_fills_gaps(self):
+        from templater import suggest
+        from server import score
+        out = suggest('# T\n')
+        self.assertIn('## License', out)
+        self.assertGreater(score('# T\n' + out)['score'], score('# T\n')['score'])
